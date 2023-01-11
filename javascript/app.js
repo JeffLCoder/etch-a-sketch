@@ -8,20 +8,25 @@ const grid = document.querySelector('.grid');
 const gridLayout = document.querySelector('.grid__layout');
 gridLayout.style.gridTemplateRows = numberOfRows;
 gridLayout.style.gridTemplateColumns = numberOfColumns;
-const cellWidth =;
-const cellHeight =;
+const viewPortWidth = document.body.clientWidth;
+let cellWidth = viewPortWidth * 0.8 / numberOfColumns;
+// console.log(viewPortWidth);
+// console.log(cellWidth);
+// const cellHeight =;
 
 for (i = 1; i <= numberOfRows; i++) {
 
     for (j = 1; j <= numberOfColumns; j++) {
 
-        cell = document.createElement('div');
-        gridLayout.appendChild(cell);
-        cell.style.width = cellWidth;
-        cell.style.height = cellHeight;
-        cell.style.gridRow = i;
-        cell.style.gridColumn = j;
+        const cell = document.createElement('div');
+        cell.style.width = `${cellWidth}`;
+        cell.style.height = `${cellWidth}`;
+        console.log(cell.style.width);
+        cell.style.gridRow = `${i}`;
+        cell.style.gridColumn = `${j}`;
         cell.classList.add(`column${i}-row${j}`, 'cell-unit');
+        cell.style.backgroundColor = 'orange';
+        gridLayout.appendChild(cell);
 
     }
 }

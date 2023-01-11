@@ -7,6 +7,13 @@
 }
 
 .grid {
-    width: 90vh;
-    height: auto;
+    width: 90vw;
+    height: 90vh;
+    margin: auto;
+}
+
+.grid__layout {
+    width: 90%;
+    height: 90%;
+    display: grid;
 }
