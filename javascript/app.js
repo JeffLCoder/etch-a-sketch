@@ -8,8 +8,12 @@ const grid = document.querySelector('.grid');
 const gridLayout = document.querySelector('.grid__layout');
 gridLayout.style.gridTemplateRows = numberOfRows;
 gridLayout.style.gridTemplateColumns = numberOfColumns;
-const viewPortWidth = document.body.clientWidth;
-let cellWidth = viewPortWidth * 0.8 / numberOfColumns;
+// const gridWidth = document.body.clientWidth < document.body.clientHeight ? document.body.clientWidth : document.body.clientHeight;
+// grid.style.width = gridWidth;
+// grid.style.height = gridWidth;
+
+// let cellWidth = gridWidth * .9 / numberOfColumns;
+
 // console.log(viewPortWidth);
 // console.log(cellWidth);
 // const cellHeight =;
@@ -19,13 +23,17 @@ for (i = 1; i <= numberOfRows; i++) {
     for (j = 1; j <= numberOfColumns; j++) {
 
         const cell = document.createElement('div');
-        cell.style.width = `${cellWidth}`;
-        cell.style.height = `${cellWidth}`;
-        console.log(cell.style.width);
+        // cell.style.width = `${cellWidth}`;
+        // cell.style.height = `${cellWidth}`;
+        // console.log(cell.style.width);
         cell.style.gridRow = `${i}`;
         cell.style.gridColumn = `${j}`;
         cell.classList.add(`column${i}-row${j}`, 'cell-unit');
-        cell.style.backgroundColor = 'orange';
+        // cell.style.backgroundColor = 'orange';
+        cell.addEventListener('mouseover', (e) => {
+            // console.log(e);
+            e.target.classList.toggle('new-color')
+        })
         gridLayout.appendChild(cell);
 
     }

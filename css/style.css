@@ -7,13 +7,24 @@
 }
 
 .grid {
-    width: 90vw;
-    height: 90vh;
+    height: 80vw;
+    width: 80vw;
     margin: auto;
 }
 
 .grid__layout {
-    width: 90%;
-    height: 90%;
+    width: 80%;
+    height: 80%;
     display: grid;
+    column-gap: 3px;
+    row-gap: 3px;
+    margin: 3rem auto;
+}
+
+.cell-unit {
+    background-color: orange;
+}
+
+.new-color {
+    background-color: white;
 }
