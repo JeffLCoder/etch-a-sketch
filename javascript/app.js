@@ -3,11 +3,11 @@
 // 1.a  needs to add an indicator to show the value user has chosen
 // 1.b  create a button for user to submit
 // 2.   create default 16x16 grids
-let numberOfRows = 16, numberOfColumns = 16;
+// let numberOfRows = 16, numberOfColumns = 16;
 const grid = document.querySelector('.grid');
 const gridLayout = document.querySelector('.grid__layout');
-gridLayout.style.gridTemplateRows = numberOfRows;
-gridLayout.style.gridTemplateColumns = numberOfColumns;
+const btn = document.querySelector('.header__button')
+
 // const gridWidth = document.body.clientWidth < document.body.clientHeight ? document.body.clientWidth : document.body.clientHeight;
 // grid.style.width = gridWidth;
 // grid.style.height = gridWidth;
@@ -17,28 +17,40 @@ gridLayout.style.gridTemplateColumns = numberOfColumns;
 // console.log(viewPortWidth);
 // console.log(cellWidth);
 // const cellHeight =;
+function drawGrid(numberOfRows, numberOfColumns) {
+    gridLayout.style.gridTemplateRows = numberOfRows;
+    gridLayout.style.gridTemplateColumns = numberOfColumns;
 
-for (i = 1; i <= numberOfRows; i++) {
+    for (i = 1; i <= numberOfRows; i++) {
 
-    for (j = 1; j <= numberOfColumns; j++) {
+        for (j = 1; j <= numberOfColumns; j++) {
 
-        const cell = document.createElement('div');
-        // cell.style.width = `${cellWidth}`;
-        // cell.style.height = `${cellWidth}`;
-        // console.log(cell.style.width);
-        cell.style.gridRow = `${i}`;
-        cell.style.gridColumn = `${j}`;
-        cell.classList.add(`column${i}-row${j}`, 'cell-unit');
-        // cell.style.backgroundColor = 'orange';
-        cell.addEventListener('mouseover', (e) => {
-            // console.log(e);
-            e.target.classList.toggle('new-color')
-        })
-        gridLayout.appendChild(cell);
+            const cell = document.createElement('div');
+            // cell.style.width = `${cellWidth}`;
+            // cell.style.height = `${cellWidth}`;
+            // console.log(cell.style.width);
+            cell.style.gridRow = `${i}`;
+            cell.style.gridColumn = `${j}`;
+            cell.classList.add(`column${i}-row${j}`, 'cell-unit');
+            // cell.style.backgroundColor = 'orange';
+            cell.addEventListener('mouseover', (e) => {
+                // console.log(e);
+                e.target.classList.toggle('new-color')
+            })
+            gridLayout.appendChild(cell);
 
+        }
     }
 }
-
+drawGrid(16, 16);
+btn.addEventListener('click', () => {
+    const num = parseInt(prompt('Pls enter numbers between 10-99:'));
+    // let mainGrid = document.getElementById('main-grid');
+    while (gridLayout.firstChild) {
+        gridLayout.removeChild(gridLayout.firstChild)
+    }
+    drawGrid(num, num);
+})
 // 2.a  create a container for the  grid
 // 2.b  use  recursive loops to generate the grid
 // 2.c  define space for grid
