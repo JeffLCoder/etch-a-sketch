@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.header {
+    text-align: center;
+}
+
 .grid {
     height: 80vw;
     width: 80vw;
@@ -22,9 +26,37 @@
 }
 
 .cell-unit {
-    background-color: orange;
+    background-color: rgb(255, 166, 0);
 }
 
 .new-color {
     background-color: white;
 }
+
+/* .new-color-1 {
+    background-color: white;    
+}
+.new-color-2 {
+    background-color: white;    
+}
+.new-color-3 {
+    background-color: white;    
+}
+.new-color-4 {
+    background-color: white;    
+}
+.new-color-5 {
+    background-color: white;    
+}
+.new-color-6 {
+    background-color: white;    
+}
+.new-color-7 {
+    background-color: white;    
+}
+.new-color-8 {
+    background-color: white;    
+}
+.new-color-9 {
+    background-color: white;    
+} */

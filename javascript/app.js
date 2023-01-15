@@ -42,6 +42,8 @@ function drawGrid(numberOfRows, numberOfColumns) {
         }
     }
 }
+// for bonus part, i need to declare a function outside of eventListener and invoke it inside the listener. This function change the background color, and there should be an global varible that does ++ which adds darkness everytime the function is executed. 
+// when calling upon that function, the event target's class  will be past, so thaat the function know which cell to apply darkened color
 drawGrid(16, 16);
 btn.addEventListener('click', () => {
     const num = parseInt(prompt('Pls enter numbers between 10-99:'));
