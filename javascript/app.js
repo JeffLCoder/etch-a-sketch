@@ -36,11 +36,20 @@ function drawGrid(numberOfRows, numberOfColumns) {
             cell.addEventListener('mouseover', (e) => {
                 // console.log(e);
                 e.target.classList.toggle('new-color')
+                cellClass = e.target.classList[0];
+                // console.log(cellClass);
+                chgBgdColor(cellClass);
             })
             gridLayout.appendChild(cell);
 
         }
     }
+}
+
+const chgBgdColor = (cell) => {
+    // console.log(cell);
+    const mouseOverCell = document.querySelector(`.${cell}`);
+    mouseOverCell.style.backgroundColor = 'blue';
 }
 // for bonus part, i need to declare a function outside of eventListener and invoke it inside the listener. This function change the background color, and there should be an global varible that does ++ which adds darkness everytime the function is executed. 
 // when calling upon that function, the event target's class  will be past, so thaat the function know which cell to apply darkened color
