@@ -8,15 +8,6 @@ const grid = document.querySelector('.grid');
 const gridLayout = document.querySelector('.grid__layout');
 const btn = document.querySelector('.header__button')
 
-// const gridWidth = document.body.clientWidth < document.body.clientHeight ? document.body.clientWidth : document.body.clientHeight;
-// grid.style.width = gridWidth;
-// grid.style.height = gridWidth;
-
-// let cellWidth = gridWidth * .9 / numberOfColumns;
-
-// console.log(viewPortWidth);
-// console.log(cellWidth);
-// const cellHeight =;
 function drawGrid(numberOfRows, numberOfColumns) {
     gridLayout.style.gridTemplateRows = numberOfRows;
     gridLayout.style.gridTemplateColumns = numberOfColumns;
@@ -26,18 +17,13 @@ function drawGrid(numberOfRows, numberOfColumns) {
         for (j = 1; j <= numberOfColumns; j++) {
 
             const cell = document.createElement('div');
-            // cell.style.width = `${cellWidth}`;
-            // cell.style.height = `${cellWidth}`;
-            // console.log(cell.style.width);
             cell.style.gridRow = `${i}`;
             cell.style.gridColumn = `${j}`;
             cell.classList.add(`column${i}-row${j}`, 'cell-unit');
-            // cell.style.backgroundColor = 'orange';
             cell.addEventListener('mouseover', (e) => {
-                // console.log(e);
                 e.target.classList.toggle('new-color')
                 cellClass = e.target.classList[0];
-                console.log(cellClass);
+                // console.log(cellClass);
                 chgBgdColor(cellClass);
             })
             gridLayout.appendChild(cell);
@@ -45,14 +31,22 @@ function drawGrid(numberOfRows, numberOfColumns) {
         }
     }
 }
-let alpha = 0.1;
-const randomColor = `${Math.floor(Math.random() * 128)}, ${Math.floor(Math.random() * 128)}, ${Math.floor(Math.random() * 128)}`;
-console.log(randomColor);
+
+let randomR = Math.floor(Math.random() * 128);
+let randomG = Math.floor(Math.random() * 128);
+let randomB = Math.floor(Math.random() * 128);
+const incR = Math.floor(randomR / 10);
+const incG = Math.floor(randomG / 10);
+const incB = Math.floor(randomB / 10);
+// console.log(randomColor);
 const chgBgdColor = (cell) => {
     const mouseOverCell = document.querySelector(`.${cell}`);
-    mouseOverCell.style.backgroundColor = `rgba(${randomColor}, ${alpha})`;
-    alpha += 0.1;
+    mouseOverCell.style.backgroundColor = `rgb(${randomR}, ${randomG},${randomB})`;
+    randomR = (randomR - incR) <= 0 ? 0 : randomR - incR;
+    randomG = (randomG - incG) <= 0 ? 0 : randomG - incG;
+    randomB = (randomB - incB) <= 0 ? 0 : randomB - incB;
 
+    console.log(`rgb(${randomR}, ${randomG},${randomB})`);
 }
 // for bonus part, i need to declare a function outside of eventListener and invoke it inside the listener. This function change the background color, and there should be an global varible that does ++ which adds darkness everytime the function is executed. 
 // when calling upon that function, the event target's class  will be past, so thaat the function know which cell to apply darkened color
